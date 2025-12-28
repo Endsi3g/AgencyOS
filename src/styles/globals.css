@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #374151;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+
+/* Selection styles */
+::selection {
+  background-color: #2563EB;
+  color: white;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base body styles */
+body {
+  @apply bg-background-light text-slate-900 font-display antialiased;
+}
+
+.dark body {
+  @apply bg-background-dark text-white;
+}
+
+/* Material Icons adjustments */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Card hover effects */
+@layer components {
+  .card {
+    @apply bg-white dark:bg-surface-dark rounded-xl border border-slate-100 dark:border-slate-800 shadow-card transition-all duration-200;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer hover:border-primary/50;
+  }
+
+  /* Button variants */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-medium text-sm h-10 px-4 rounded-lg transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary hover:bg-primary-dark text-white shadow-sm shadow-blue-500/20;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700;
+  }
+
+  .btn-ghost {
+    @apply btn hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark 
+           text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500
+           focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300;
+  }
+
+  .badge-green {
+    @apply badge bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300;
+  }
+
+  .badge-purple {
+    @apply badge bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300;
+  }
+
+  .badge-orange {
+    @apply badge bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-300;
+  }
+
+  .badge-red {
+    @apply badge bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-300;
+  }
+
+  .badge-gray {
+    @apply badge bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300;
+  }
+
+  /* Status indicators */
+  .status-dot {
+    @apply size-2 rounded-full;
+  }
+
+  .status-dot-success {
+    @apply status-dot bg-emerald-500;
+  }
+
+  .status-dot-warning {
+    @apply status-dot bg-amber-500;
+  }
+
+  .status-dot-error {
+    @apply status-dot bg-red-500;
+  }
+
+  .status-dot-info {
+    @apply status-dot bg-blue-500;
+  }
+
+  /* Nav link styles */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 
+           hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors;
+  }
+
+  .nav-link-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-sm shadow-blue-200;
+  }
+
+  /* Kanban column */
+  .kanban-column {
+    @apply w-80 flex-shrink-0 flex flex-col h-full max-h-full rounded-xl bg-slate-100/70 border border-slate-200;
+  }
+
+  .kanban-card {
+    @apply bg-white p-4 rounded-lg border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all cursor-pointer;
+  }
+}
+
+/* Animation utilities */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
